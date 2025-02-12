@@ -1,0 +1,78 @@
+/* Основен стил за цялото тяло */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+}
+
+/* Заглавна част */
+.header {
+  background-color: #ff66a3;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+.header h2 {
+  margin: 5px 0 0;
+  font-size: 1.5em;
+}
+
+/* Списък от услуги */
+.treatment-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+/* Карта на отделна услуга */
+.treatment-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 15px;
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s;
+}
+.treatment-card:hover {
+  transform: scale(1.05);
+}
+.treatment-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.treatment-content {
+  padding: 15px;
+}
+.treatment-content h3 {
+  margin-top: 0;
+  color: #ff66a3;
+}
+.treatment-content p {
+  margin: 5px 0;
+}
+.price {
+  font-weight: bold;
+  color: #333;
+}
+.category {
+  font-style: italic;
+  color: #888;
+}
+
+/* Футър */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #ff66a3;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
