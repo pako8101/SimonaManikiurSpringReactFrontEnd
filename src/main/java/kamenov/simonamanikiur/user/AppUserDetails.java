@@ -1,4 +1,4 @@
-package kamenov.cupcakespakoandmoni.models.user;
+package kamenov.simonamanikiur.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

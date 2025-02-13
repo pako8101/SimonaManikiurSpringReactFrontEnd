@@ -1,12 +1,13 @@
-package kamenov.cupcakespakoandmoni.services.impl;
+package kamenov.simonamanikiur.services.impl;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import kamenov.cupcakespakoandmoni.models.UserEntity;
-import kamenov.cupcakespakoandmoni.services.JwtService;
+
+import kamenov.simonamanikiur.entity.UserEntity;
+import kamenov.simonamanikiur.services.JwtService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

@@ -1,15 +1,14 @@
-package kamenov.cupcakespakoandmoni.services;
+package kamenov.simonamanikiur.services;
 
-import kamenov.cupcakespakoandmoni.models.UserEntity;
-import kamenov.cupcakespakoandmoni.models.UserRoleEntity;
-import kamenov.cupcakespakoandmoni.models.user.AppUserDetails;
-import kamenov.cupcakespakoandmoni.repos.UserRepository;
+
+import kamenov.simonamanikiur.entity.UserEntity;
+import kamenov.simonamanikiur.entity.UserRoleEntity;
+import kamenov.simonamanikiur.repos.UserRepository;
+import kamenov.simonamanikiur.user.AppUserDetails;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

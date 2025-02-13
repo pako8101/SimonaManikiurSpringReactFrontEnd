@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import TreatmentCard from './TreatmentCard';
 
-const TreatmentList = () => {
+function Home() {
     const [treatments, setTreatments] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8888/api/treatments')
+        fetch('http://localhost:8080/api/treatments')
             .then(response => response.json())
             .then(data => setTreatments(data))
             .catch(error => console.error('Грешка при зареждане на услугите:', error));
@@ -18,6 +18,6 @@ const TreatmentList = () => {
             ))}
         </div>
     );
-};
+}
 
-export default TreatmentList;
+export default Home;

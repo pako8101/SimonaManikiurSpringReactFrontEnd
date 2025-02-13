@@ -1,6 +1,7 @@
-package kamenov.cupcakespakoandmoni.services;
+package kamenov.simonamanikiur.services;
 
-import kamenov.cupcakespakoandmoni.models.UserEntity;
+
+import kamenov.simonamanikiur.entity.UserEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Map;

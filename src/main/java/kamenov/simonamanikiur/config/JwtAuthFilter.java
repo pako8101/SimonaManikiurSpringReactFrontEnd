@@ -1,11 +1,12 @@
-package kamenov.cupcakespakoandmoni.config;
+package kamenov.simonamanikiur.config;
 
 import io.jsonwebtoken.io.IOException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import kamenov.cupcakespakoandmoni.services.JwtService;
+
+import kamenov.simonamanikiur.services.JwtService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;

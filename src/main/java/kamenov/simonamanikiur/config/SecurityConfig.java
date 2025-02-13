@@ -1,11 +1,13 @@
-package kamenov.cupcakespakoandmoni.config;
+package kamenov.simonamanikiur.config;
 
-import kamenov.cupcakespakoandmoni.models.enums.UserRoleEnum;
-import kamenov.cupcakespakoandmoni.repos.UserRepository;
-import kamenov.cupcakespakoandmoni.services.AppUserDetailsService;
+import kamenov.simonamanikiur.entity.enums.UserRoleEnum;
+import kamenov.simonamanikiur.repos.UserRepository;
+import kamenov.simonamanikiur.services.AppUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -39,7 +41,9 @@ public class SecurityConfig {
                                                 "/delete/**",
                                                 "/edit/**",
                                                 "/users/login-error",
-                                                "/users/login", "/users/register"
+                                                "/users/login",
+                                                "/users/register",
+                                                "/api/auth/**"
 
                                         )
                                         .permitAll()
@@ -95,17 +99,17 @@ public class SecurityConfig {
 
         return http.build();
     }
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:8000")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/**")
+//                        .allowedOrigins("http://localhost:8000")
+//                        .allowedMethods("GET", "POST", "PUT", "DELETE");
+//            }
+//        };
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -123,6 +127,10 @@ public class SecurityConfig {
                 new RequestAttributeSecurityContextRepository(),
                 new HttpSessionSecurityContextRepository()
         );
+    }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
 }

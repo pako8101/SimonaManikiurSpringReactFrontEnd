@@ -1,2 +1,5 @@
-package kamenov.simonamanikiur.entity.enums;public enum UserRoleEnum {
+package kamenov.simonamanikiur.entity.enums;
+
+public enum UserRoleEnum {
+    USER, ADMIN
 }

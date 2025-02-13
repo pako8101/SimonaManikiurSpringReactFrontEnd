@@ -1,2 +1,9 @@
-package kamenov.simonamanikiur.repos;public interface TreatmentRepository {
+package kamenov.simonamanikiur.repos;
+
+import kamenov.simonamanikiur.entity.Treatment;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TreatmentRepository extends JpaRepository<Treatment,Long> {
 }

@@ -1,8 +1,9 @@
-package kamenov.cupcakespakoandmoni.models.user;
+package kamenov.simonamanikiur.user;
 
-import kamenov.cupcakespakoandmoni.models.UserEntity;
-import kamenov.cupcakespakoandmoni.models.enums.UserRoleEnum;
-import kamenov.cupcakespakoandmoni.repos.UserRepository;
+
+import kamenov.simonamanikiur.entity.UserEntity;
+import kamenov.simonamanikiur.entity.enums.UserRoleEnum;
+import kamenov.simonamanikiur.repos.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
