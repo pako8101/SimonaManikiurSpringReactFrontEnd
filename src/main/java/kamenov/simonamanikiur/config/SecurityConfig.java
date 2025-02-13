@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,7 +30,7 @@ public class SecurityConfig {
                                            SecurityContextRepository securityContextRepository
             , JwtAuthFilter jwtAuthFilter   ) throws Exception {
 
-        http
+        http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorizeHttpRequests ->
                                 authorizeHttpRequests.
@@ -41,13 +42,15 @@ public class SecurityConfig {
                                                 "/delete/**",
                                                 "/edit/**",
                                                 "/users/login-error",
-                                                "/users/login",
-                                                "/users/register",
+                                                "/api/auth/login",
+                                                "/api/auth/register",
+                                                "api/treatments",
                                                 "/api/auth/**"
 
                                         )
                                         .permitAll()
                                         .requestMatchers("/cart/add/**").authenticated()
+
 //                                        .anyRequest().authenticated().
                                         .requestMatchers("/error").permitAll().
                                         requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
@@ -92,9 +95,10 @@ public class SecurityConfig {
 
                 )
                 .sessionManagement((session) -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .addFilterBefore(jwtAuthFilter,UsernamePasswordAuthenticationFilter.class)
+
         ;
 
         return http.build();

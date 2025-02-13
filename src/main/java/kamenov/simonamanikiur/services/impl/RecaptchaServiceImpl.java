@@ -14,7 +14,8 @@ public class RecaptchaServiceImpl implements RecaptchaService {
     @Value("${secret_key_recaptcha}")
     private String recaptchaSecret;
 
-    private static final String RECAPTCHA_VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
+    private static final String RECAPTCHA_VERIFY_URL =
+            "https://www.google.com/recaptcha/api/siteverify";
 @Override
     public boolean validateRecaptcha(String recaptchaResponse) {
         RestTemplate restTemplate = new RestTemplate();

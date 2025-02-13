@@ -2,11 +2,22 @@ package kamenov.simonamanikiur.entity.dtos;
 
 public class RegisterDto {
     public String username;
-    public String password;
+    public String fullName;
     public String email;
+    public String password;
+
     public String recaptchaToken;
 
     public RegisterDto() {
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public RegisterDto setFullName(String fullName) {
+        this.fullName = fullName;
+        return this;
     }
 
     public String getUsername() {

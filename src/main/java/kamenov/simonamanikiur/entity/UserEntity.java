@@ -16,31 +16,29 @@ public class UserEntity extends BaseEntity {
 
     @JdbcTypeCode(VARCHAR)
     private UUID uuid;
-
-    @Column(nullable = false, unique = true)
-    @NotNull
-    private String email;
-
     @Column(unique = true, nullable = false)
     @NotNull
     private String username;
-
     @Column(unique = true, nullable = false, name = "full_name")
     @NotNull
     private String fullName;
-
+    @Column(nullable = false, unique = true)
+    @NotNull
+    private String email;
     @Column(nullable = false)
     @NotNull
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> roles;
 
     public UserEntity() {
     }
 
-    public UserEntity(String email, String username, String password) {
-        this.email = email;
+    public UserEntity(String username, String fullName, String email, String password) {
         this.username = username;
+        this.fullName = fullName;
+        this.email = email;
         this.password = password;
     }
 

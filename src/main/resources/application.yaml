@@ -68,4 +68,8 @@ servlet:
             uri-encoding=UTF-8:
 google:
   recaptcha:
-    secret= {secret_key_recaptcha}:
+    secret: ${secret_key_recaptcha}
+    site: ${site_key_recaptcha}
+#      recaptcha:
+#      secret: ${secret_key}
+#      site: ${site_key}

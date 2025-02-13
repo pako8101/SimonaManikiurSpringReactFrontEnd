@@ -53,7 +53,9 @@ public class AuthController {
         if (userService.findByUsername(request.username) != null) {
             return ResponseEntity.badRequest().body("Username already exists");
         }
-        UserEntity newUser = new UserEntity(request.username, request.password, request.email);
+        UserEntity newUser = new UserEntity(request.username,
+                request.fullName, request.email,
+                request.password);
         userService.registerUser(newUser);
         return ResponseEntity.ok("User registered successfully");
     }

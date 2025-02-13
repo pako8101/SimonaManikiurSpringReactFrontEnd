@@ -4,8 +4,9 @@ import ReCAPTCHA from 'react-google-recaptcha';
 function Register() {
     const [formData, setFormData] = useState({
         username: '',
-        password: '',
+        fullName: '',
         email: '',
+        password: '',
         recaptchaToken: ''
     });
     const [error, setError] = useState('');
@@ -50,7 +51,8 @@ function Register() {
 
     return (
         <div className="auth-container">
-            <h2>Регистрация</h2>
+            <h2>Симона маникюр и педикюр</h2>
+            <h3>Регистрация </h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Потребителско име</label>
@@ -58,6 +60,16 @@ function Register() {
                         type="text"
                         name="username"
                         value={formData.username}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Първо и второ Име</label>
+                    <input
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
                         onChange={handleChange}
                         required
                     />
@@ -84,7 +96,7 @@ function Register() {
                 </div>
                 <div className="form-group">
                     <ReCAPTCHA
-                        sitekey="6LcVGNUqAAAAADtNvasv1OSFJ1PmglHOqWdYbXY4"
+                        sitekey="6LdKEdYqAAAAAD-B56A9DQ8v35X4oYTnrC4JqEOc"
                         onChange={handleRecaptchaChange}
                     />
                 </div>
