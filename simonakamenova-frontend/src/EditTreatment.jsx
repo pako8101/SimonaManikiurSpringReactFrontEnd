@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './EditTreatment.css';
+import './css/EditTreatment.css';
 
 const EditTreatment = () => {
     const { id } = useParams();

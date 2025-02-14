@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Appointments.css';
+import './css/Appointments.css';
 
 const Appointments = () => {
     const [appointments, setAppointments] = useState([]);

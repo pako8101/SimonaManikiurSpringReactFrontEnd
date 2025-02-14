@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Pedicure.css';
+import './css/Pedicure.css';
 
 const Pedicure = () => {
     const [treatments, setTreatments] = useState([]);

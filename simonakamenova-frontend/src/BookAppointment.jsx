@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './BookAppointment.css'; // Отделен CSS файл
+import './css/BookAppointment.css'; // Отделен CSS файл
 
 const BookAppointment = () => {
     const [formData, setFormData] = useState({

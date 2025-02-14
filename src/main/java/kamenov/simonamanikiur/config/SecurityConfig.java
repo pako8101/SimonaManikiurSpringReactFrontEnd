@@ -37,6 +37,7 @@ public class SecurityConfig {
                                         requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                         .permitAll().
                                         requestMatchers("/",
+                                                "api/home/**",
                                                 "/about",
                                                 "/api/treatments/pedicure",
                                                 "/delete/**",
@@ -50,11 +51,12 @@ public class SecurityConfig {
 
                                         )
                                         .permitAll()
+                                        .requestMatchers("/api/appointments/**").hasRole(UserRoleEnum.ADMIN.name())
                                         .requestMatchers("/cart/add/**").authenticated()
 
 //                                        .anyRequest().authenticated().
                                         .requestMatchers("/error").permitAll().
-                                        requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
+                                        requestMatchers("/api/appointments/**").hasRole(UserRoleEnum.ADMIN.name()).
                                         requestMatchers("/pages/all").hasRole(UserRoleEnum.USER.name()).
                                         anyRequest()
                                         .authenticated()

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AddTreatment.css'; // Можете да създадете отделен CSS файл
+import './css/AddTreatment.css'; // Можете да създадете отделен CSS файл
 
 const AddTreatment = () => {
     const [formData, setFormData] = useState({

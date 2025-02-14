@@ -45,7 +45,7 @@ function App() {
                 </header>
                 <main>
                     <Routes>
-                        <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" replace />} />
+                        <Route path="/" element={!isAuthenticated ? <Home /> : <Navigate to="/" replace />} />
                         <Route path="/login" element={isAuthenticated ? <Navigate to="/" replace /> : <Login onLogin={() => setIsAuthenticated(true)} />} />
                         <Route path="/register" element={isAuthenticated ? <Navigate to="/" replace /> : <Register />} />
                         <Route path="/manicure" element={<Manicure />} />

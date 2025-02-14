@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Manicure.css';
+import './css/Manicure.css';
 
 const Manicure = () => {
     const [treatments, setTreatments] = useState([]);
