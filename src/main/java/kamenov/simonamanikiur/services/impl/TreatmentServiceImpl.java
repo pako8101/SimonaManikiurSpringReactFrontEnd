@@ -43,4 +43,9 @@ public class TreatmentServiceImpl implements TreatmentService {
     public void deleteTreatment(Long id) {
         treatmentRepository.deleteById(id);
     }
+
+    @Override
+    public List<Treatment> findByCategory(String category) {
+        return treatmentRepository.findAllByCategory(category);
+    }
 }

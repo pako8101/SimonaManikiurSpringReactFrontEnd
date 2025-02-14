@@ -1,6 +1,7 @@
 package kamenov.simonamanikiur.web;
 
 
+import jakarta.validation.Valid;
 import kamenov.simonamanikiur.entity.UserEntity;
 import kamenov.simonamanikiur.entity.dtos.AuthResponse;
 import kamenov.simonamanikiur.entity.dtos.LoginDto;
@@ -10,9 +11,11 @@ import kamenov.simonamanikiur.services.RecaptchaService;
 import kamenov.simonamanikiur.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -28,7 +31,7 @@ public class AuthController {
     @Autowired
     private final RecaptchaService recaptchaService;
 
-@Autowired
+    @Autowired
     private final AuthenticationManager authenticationManager;
 
     public AuthController(JwtService jwtUtil,
@@ -43,7 +46,7 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterDto request) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterDto request) {
         // Валидиране на reCAPTCHA
         boolean recaptchaValid = recaptchaService.validateRecaptcha(request.recaptchaToken);
         if (!recaptchaValid) {
@@ -61,16 +64,34 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody LoginDto request) {
+    public ResponseEntity<?> loginUser(@Valid @RequestBody LoginDto request) {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.username, request.password)
+                    new UsernamePasswordAuthenticationToken(request.getUsername(), request.password)
             );
         } catch (AuthenticationException e) {
             return ResponseEntity.status(401).body("Incorrect username or password");
         }
-        String token = jwtUtil.generateToken(request.username);
-        return ResponseEntity.ok(new AuthResponse(token, request.username));
+        String token = jwtUtil.generateToken(request.getUsername());
+        return ResponseEntity.ok(new AuthResponse(token, request.getUsername()));
     }
-}
 
+    @PostMapping("/login-error")
+    public String onFailedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter
+            .SPRING_SECURITY_FORM_USERNAME_KEY) String username,
+                                RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+
+
+//        redirectAttributes.addFlashAttribute("username", username);
+        return "redirect:/api/auth/login";
+//        if (userServiceModel == null) {
+//            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel());
+//            redirectAttributes.addFlashAttribute("isFound", false);
+//            return "redirect:login";
+//        }
+    }
+
+}

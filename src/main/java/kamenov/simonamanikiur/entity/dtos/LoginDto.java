@@ -1,9 +1,18 @@
 package kamenov.simonamanikiur.entity.dtos;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import kamenov.simonamanikiur.entity.UserEntity;
+import kamenov.simonamanikiur.validation.uniqueUsername.UniqueUsername;
+import org.springframework.security.core.userdetails.User;
 
 public class LoginDto {
-    public UserEntity username;
+    @NotBlank
+    @Size(min = 3, max = 20)
+    @UniqueUsername
+    private UserEntity username;
+    @NotBlank
+    @Size(min = 8, max = 20)
     public String password;
 
     public LoginDto() {

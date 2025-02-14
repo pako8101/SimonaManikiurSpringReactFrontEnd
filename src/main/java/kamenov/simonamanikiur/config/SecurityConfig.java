@@ -38,14 +38,15 @@ public class SecurityConfig {
                                         .permitAll().
                                         requestMatchers("/",
                                                 "/about",
-                                                "/products",
+                                                "/api/treatments/pedicure",
                                                 "/delete/**",
                                                 "/edit/**",
                                                 "/users/login-error",
                                                 "/api/auth/login",
                                                 "/api/auth/register",
-                                                "api/treatments",
-                                                "/api/auth/**"
+                                                "api/treatments/**",
+                                                "/api/auth/**",
+                                                "/api/appointments"
 
                                         )
                                         .permitAll()

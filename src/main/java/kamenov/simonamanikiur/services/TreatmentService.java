@@ -15,4 +15,6 @@ public interface TreatmentService {
     Treatment updateTreatment(Long id, Treatment updatedTreatment);
 
     void deleteTreatment(Long id);
+
+    List<Treatment> findByCategory(String manicure);
 }
