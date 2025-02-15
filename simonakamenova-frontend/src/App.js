@@ -38,6 +38,7 @@ function App() {
                         <Link to="/book-appointment">Запази час</Link>
                         <Link to="/appointments">Запазени часове</Link>
                         {!isAuthenticated && <Link to="/add-treatment">Добави услуга</Link>}
+                        {!isAuthenticated && <Link to="/edit-treatment/:id">Редактирай услуга</Link>}
                         {!isAuthenticated && <Link to="/login">Вход</Link>}
                         {!isAuthenticated && <Link to="/register">Регистрация</Link>}
                         {isAuthenticated && <button onClick={handleLogout}>Изход</button>}

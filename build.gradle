@@ -50,9 +50,6 @@ dependencies {
 	testImplementation 'org.testcontainers:mysql'
 
 	testImplementation 'org.mockito:mockito-core:5.5.0'
-
-
-
 	// JUnit (ако използвате JUnit за тестовете)
 	testImplementation 'junit:junit:4.13.2'
 

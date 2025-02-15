@@ -46,6 +46,16 @@ logging:
 server:
   port: 8888
 
+  mail:
+    host: smtp.gmail.com
+    port: 578
+    username: ${email_username}
+    password: ${password_email}
+    test-connection: true
+     smtp.auth=true
+     smtp.starttls.enable=true
+
+
 servlet:
   multipart:
     max-file-size: 10MB
@@ -73,3 +83,4 @@ google:
 #      recaptcha:
 #      secret: ${secret_key}
 #      site: ${site_key}
+

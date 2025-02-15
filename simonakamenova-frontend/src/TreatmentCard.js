@@ -34,7 +34,7 @@ const TreatmentCard = ({ treatment, onDelete, isAuthenticated }) => {
                 <Link to={`/treatment/${treatment.id}`} className="details-link">
                     Виж повече
                 </Link>
-                {isAuthenticated && (
+                {!isAuthenticated && (
                     <div className="admin-actions">
                         <Link to={`/edit-treatment/${treatment.id}`} className="edit-link">Edit</Link>
                         <button onClick={handleDelete} className="delete-button">Delete</button>
