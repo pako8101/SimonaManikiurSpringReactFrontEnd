@@ -15,6 +15,7 @@ const TreatmentCard = ({ treatment, onDelete, isAuthenticated }) => {
                 })
                 .then(message => {
                     alert(message);
+                    console.log(treatment.imageUrl)
                     onDelete(); // callback за презареждане на данните
                 })
                 .catch(err => alert(err.message));
@@ -23,6 +24,7 @@ const TreatmentCard = ({ treatment, onDelete, isAuthenticated }) => {
 
     return (
         <div className="treatment-card">
+
             <img src={treatment.imageUrl || 'https://via.placeholder.com/300x200?text=Treatment'} alt={treatment.name} className="treatment-image" />
             <div className="treatment-content">
                 <h3>{treatment.name}</h3>
